@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 9 / 16;
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+#game-area {
+    width: 100%;
+    height: 100%;
+    background-image: url('/placeholder.svg?height=800&width=400');
+    background-size: 100% 200%;
+    animation: scrollRoad 5s linear infinite;
+}
+
+@keyframes scrollRoad {
+    from { background-position: 0 0; }
+    to { background-position: 0 100%; }
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+    z-index: 10;
+}
+
+.car {
+    width: 60px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.3s ease;
+    animation: carBounce 0.5s ease-in-out infinite alternate;
+}
+
+#player::after {
+    content: '🚗';
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes carBounce {
+    from { transform: translateX(-50%) translateY(0); }
+    to { transform: translateX(-50%) translateY(-5px); }
+}
+
+.obstacle {
+    width: 60px;
+    height: 100px;
+    background-color: blue;
+    position: absolute;
+    top: -100px;
+    animation: obstacleMove 4s linear;
+}
+
+.obstacle::after {
+    content: '🚙';
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes obstacleMove {
+    from { top: -100px; }
+    to { top: 100%; }
+}
+
+#controls {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+#controls button {
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#controls button:active {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#start-screen, #game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#start-screen button, #game-over-screen button {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#start-screen button:hover, #game-over-screen button:hover {
+    transform: scale(1.1);
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    #controls {
+        display: none;
+    }
+}

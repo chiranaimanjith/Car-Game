@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Car Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-area">
+            <div id="score">Score: <span id="score-value">0</span></div>
+            <div id="player" class="car"></div>
+        </div>
+        <div id="controls">
+            <button id="left-btn">←</button>
+            <button id="right-btn">→</button>
+        </div>
+        <div id="start-screen">
+            <h2>Car Racing Game</h2>
+            <button id="start-btn">Start Game</button>
+        </div>
+        <div id="game-over-screen" class="hidden">
+            <h2>Game Over</h2>
+            <p>Your Score: <span id="final-score"></span></p>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
